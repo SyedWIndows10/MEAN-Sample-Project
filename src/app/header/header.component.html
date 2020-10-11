@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="/">Sample MEAN CRUD APP</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/" routerLinkActive="mat-accent">Flight List</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent"
+        >New Flight</a
+      >
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent"
+        >Login</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated && userRole !== 'MANAGER'">
+      <a mat-button routerLink="/auth/adduser" routerLinkActive="mat-accent"
+        >New Manager User</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>

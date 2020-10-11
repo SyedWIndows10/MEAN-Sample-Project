@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+        placeholder="Flight Name"
+      />
+      <mat-error *ngIf="form.get('title').invalid"
+        >Please enter a fligh name.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        formControlName="content"
+        placeholder="Flight Details"
+      ></textarea>
+      <mat-error *ngIf="form.get('content').invalid"
+        >Please enter a flight details.</mat-error
+      >
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Save</button>
+  </form>
+</mat-card>
